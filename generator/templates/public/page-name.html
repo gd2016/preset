@@ -7,10 +7,7 @@
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="">
-    <!-- TODO: You should modify CSP for production build -->
-    <meta http-equiv="Content-Security-Policy" content="default-src gap: data: 'unsafe-inline' 'unsafe-eval' *">
   <title>页面名称</title>
-    <script type="text/javascript" src="<%= process.env.NODE_ENV === 'production' ? './cordova.js' : './cordova/browser/platform_www/cordova.js'%>"></script>
     <link rel="shortcut icon" href="http://static.tcy365.com/uc/common/images/favicon.ico">
     <script type="text/javascript" src="//static.tcy365.com/cdn/pace/1.0.2/pace.js"></script>
     <link rel="stylesheet" href="//static.tcy365.com/cdn/pace/1.0.2/themes/blue/pace-theme-minimal.css"/>
@@ -26,7 +23,7 @@
 <script src="//static.tcy365.com/cdn/bootstrap/3.3.7/custom/1.0.4/js/bootstrap.min.js"></script>
 <script src="//static.tcy365.com/cdn/webuploader/0.1.5/webuploader.html5only.js"></script>
 <script src="//static.tcy365.com/cdn/component/jdpicker/2.2.1/jdpicker.js"></script>
-<script src="//static.tcy365.com/cdn/component/area/3.0.0/area.js"></script>
+<script src="//static.tcy365.com/cdn/component/area/4.0.0/area.js"></script>
 <script src="<%%= htmlWebpackPlugin.options.js %%>"></script>
 </body>
 </html>

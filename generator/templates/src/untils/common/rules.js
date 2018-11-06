@@ -1,18 +1,21 @@
-{{#if_nothandle ishandle operation.edit}}export const editRules = { {{#each_handle editInfo}}
-    {{#if_is @index @length}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}]{{else}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}],{{/if_is}}{{/each_handle}}
+<% if(options.operation.indexOf('edit') !== -1 && !options.isHandle){ %>export const editRules = { <% if(options.isConfig){ %><% for(var i=0; i<options.editInfo.length; i++) {%><% if(i!==options.editInfo.length-1){ %>
+    <%= options.editInfo[i].field %>:[{required: true, message: '<%= options.editInfo[i].label %>不能为空'}],<% } else { %>
+    <%= options.editInfo[i].field %>:[{required: true, message: '<%= options.editInfo[i].label %>不能为空'}]<% } %><% } %><% } else { %>
+    <% } %> 
 };
-{{/if_nothandle}}
-
-{{#ishandle}}
-export const handleRules = { {{#each_handle handleInfo}}
-    {{#if_is @index @length}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}]{{else}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}],{{/if_is}}{{/each_handle}}
+<% } %>
+<% if(options.isHandle){ %>export const handleRules = { <% if(options.isConfig){ %><% for(var i=0; i<options.handleInfo.length; i++) {%><% if(i!==options.handleInfo.length-1){ %>
+    <%= options.handleInfo[i].field %>:[{required: true, message: '<%= options.handleInfo[i].label %>不能为空'}],<% } else { %>
+    <%= options.handleInfo[i].field %>:[{required: true, message: '<%= options.handleInfo[i].label %>不能为空'}]<% } %><% } %><% } else { %>
+    <% } %> 
 };
-{{/ishandle}}
-{{#if_nothandle ishandle operation.add}}export const addRules = { {{#each_handle addInfo}}
-    {{#if_is @index @length}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}]{{else}}{{@field}}: [{required: true, message: '{{@label}}不能为空'}],{{/if_is}}{{/each_handle}}
-}
-;
-{{/if_nothandle}}
+<% } %>
+<% if(options.operation.indexOf('add') !== -1 && !options.isHandle){ %>export const addRules = {<% if(options.isConfig){ %> <% for(var i=0; i<options.addInfo.length; i++) {%><% if(i!==options.addInfo.length-1){ %>
+    <%= options.addInfo[i].field %>:[{required: true, message: '<%= options.addInfo[i].label %>不能为空'}],<% } else { %>
+    <%= options.addInfo[i].field %>:[{required: true, message: '<%= options.addInfo[i].label %>不能为空'}]<% } %><% } %><% } else { %>
+    <% } %> 
+};
+<% } %>
 //eg
 // export const actConfigRules = {
 //     DailyLimit: [

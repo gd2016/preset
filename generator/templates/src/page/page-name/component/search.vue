@@ -1,8 +1,9 @@
 <template>
-    <ct-form  searchForm :loading="loading" @search="search">
-        {{#each_search searchInfo}}
-        {{#if_is @type 'select'}}<form-item v-model="searchInfo.{{@field}}" type="{{@type}}" label="{{@label}}" :list="typeList" defaultSelect></form-item>{{else if_is @type 'autoComplete'}}<form-item v-model="searchInfo.{{@field}}" type="{{@type}}" label="{{@label}}" :list="typeList" :matchKeys="['key','val']" :keys="['key','val']" :showKeys="['key','val']"></form-item>{{else}}<form-item v-model="searchInfo.{{@field}}" type="{{@type}}" label="{{@label}}"></form-item>{{/if_is}}
-        {{/each_search}}
+    <ct-form  searchForm :loading="loading" @search="search"><% if(options.isConfig){ %><% for(var i=0; i<options.searchInfo.length; i++) {%><% if(options.searchInfo[i].type==='select'){ %>
+        <form-item prop="<%= options.searchInfo[i].field %>" v-model="formData.<%= options.searchInfo[i].field %>" label="<%= options.searchInfo[i].label %>" type="select" :list="typeList" defaultSelect></form-item><% } else if(options.searchInfo[i].type==='autoComplete'){ %>
+        <form-item prop="<%= options.searchInfo[i].field %>" type="autoComplete" v-model="formData.<%= options.searchInfo[i].field %>" label="<%= options.searchInfo[i].label %>" :list="typeList" :matchKeys="['key','val']" :keys="['key','val']" :showKeys="['key','val']"></form-item><% } else { %>
+        <form-item prop="<%= options.searchInfo[i].field %>" type="<%= options.searchInfo[i].type %>" v-model="formData.<%= options.searchInfo[i].field %>" label="<%= options.searchInfo[i].label %>" ></form-item><% } %><% } %> <% } else { %>
+        <% } %>
     </ct-form> 
 </template>
 

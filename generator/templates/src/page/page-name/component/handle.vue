@@ -2,16 +2,15 @@
     <div>   
         <slideout width="60%" :title="title" v-model="show" @on-after-hide="back">
             <template slot="body">
-                <ct-form v-loading="loading" :model="formData" ref="forms" :rules="rules">
-                    {{#each_handle handleInfo}}
-                    {{#if_is @type 'select'}}<form-item prop="{{@field}}" v-model="formData.{{@field}}" type="{{@type}}" label="{{@label}}" :list="typeList" defaultSelect></form-item>{{else if_is @type 'autoComplete'}}<form-item prop="{{@field}}" v-model="formData.{{@field}}" type="{{@type}}" label="{{@label}}" :list="typeList" :matchKeys="['key','val']" :keys="['key','val']" :showKeys="['key','val']"></form-item>{{else if_is @type 'custom'}}<form-item prop="{{@field}}" label="{{@label}}"></form-item>{{else if_is @type 'checkbox'}}<form-item prop="{{@field}}" type="{{@type}}" v-model="formData.{{@field}}" label="{{@label}}" :list="typeList"></form-item>{{else if_is @type 'radio'}}<form-item prop="{{@field}}" v-model="formData.{{@field}}" type="{{@type}}" label="{{@label}}" :list="typeList"></form-item>{{else}}<form-item prop="{{@field}}" v-model="formData.{{@field}}" type="{{@type}}" label="{{@label}}"></form-item>{{/if_is}}
-                    {{/each_handle}}
-                    <template slot="footer">
-                        <button  type="button" @click="save" class="btn btn-primary mr20">
-                            <i class="glyphicon mr5" :class="{'glyphicon-refresh':loading, rotate:loading, 'glyphicon-save':!loading}"></i>保存</button>
-                        <button type="button" @click="show=false" class="btn btn-primary">取消</button>
-                    </template>
+                <ct-form @save="save" @cancel="show=false" v-if="!error" v-loading="loading" ref="forms" :rules="rules"><% if(options.isConfig){ %><% for(var i=0; i<options.handleInfo.length; i++) {%><% if(options.handleInfo[i].type==='select'){ %>
+                    <form-item prop="<%= options.handleInfo[i].field %>" type="select" v-model="formData.<%= options.handleInfo[i].field %>" label="<%= options.handleInfo[i].label %>"  :list="typeList" defaultSelect></form-item><% }else if(options.handleInfo[i].type==='autoComplete'){  %>
+                    <form-item prop="<%= options.handleInfo[i].field %>" type="autoComplete" v-model="formData.<%= options.handleInfo[i].field %>" label="<%= options.handleInfo[i].label %>" :list="typeList" :matchKeys="['key','val']" :keys="['key','val']" :showKeys="['key','val']"></form-item><% }else if(options.handleInfo[i].type==='checkbox'){ %>
+                    <form-item prop="<%= options.handleInfo[i].field %>" type="checkbox" v-model="formData.<%= options.handleInfo[i].field %>" label="<%= options.handleInfo[i].label %>" :list="typeList" ></form-item><% } else if(options.handleInfo[i].type==='radio'){ %>
+                    <form-item prop="<%= options.handleInfo[i].field %>" type="radio" v-model="formData.<%= options.handleInfo[i].field %>" label="<%= options.handleInfo[i].label %>" :list="typeList" ></form-item><% } else { %>
+                    <form-item prop="<%= options.handleInfo[i].field %>" type="text" v-model="formData.<%= options.handleInfo[i].field %>" label="<%= options.handleInfo[i].label %>" ></form-item><% } %><% } %><% } else { %>
+                    <% } %>
                 </ct-form>
+                <div v-if="error" class="error">{{error}}</div>
             </template>
         </slideout>
     </div>
@@ -54,7 +53,7 @@ export default {
                 }
             }).then((res)=>{
                 this.formData = res.Data;
-            })
+            });
         },
         save(){
             this.$refs.forms.validate((res)=>{
