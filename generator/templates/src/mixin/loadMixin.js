@@ -1,4 +1,4 @@
-import axios from 'common/axios';
+import axios from '../untils/axios';
 export default {
     data(){
         return {

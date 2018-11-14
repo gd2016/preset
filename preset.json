@@ -1,5 +1,7 @@
 {
   "useConfigFiles": true,
+  "router": true,
+  "vuex": true,
   "cssPreprocessor": "sass",
   "plugins": {
     "@vue/cli-plugin-babel": {},
