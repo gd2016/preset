@@ -10,18 +10,17 @@ module.exports = (api, options) => {
             'eslint-plugin-html': '^4.0.6'
         },
         vue: {
-            assetsDir: 'ct108-admin-main/assets/1.0.0',
+            assetsDir: 'ct108-admin-main/1.0.0/assets',
             productionSourceMap: false,
             filenameHashing: false,
             pages: {
-                test: 'src/page/test/main.js'
+                testPage: 'src/page/testPage/main.js'
             },
             devServer: {
-                open: true,
                 openPage: 'index.html',
                 disableHostCheck: true,
                 setup: function(app) {
-                    app.get('/index.html', function(req, res) {
+                    app.get('/', function(req, res) {
                         res.sendFile(__dirname + '/src/index.html');
                     });
                 }
