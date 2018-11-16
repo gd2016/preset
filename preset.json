@@ -6,8 +6,6 @@
   "plugins": {
     "@vue/cli-plugin-babel": {},
     "@vue/cli-plugin-eslint": {},
-    "vue-cli-plugin-ct-template": {
-        "prompts": false
-    }
+    "vue-cli-plugin-ct-template": {}
   }
 }
