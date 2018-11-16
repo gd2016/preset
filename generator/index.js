@@ -23,6 +23,11 @@ module.exports = (api, options) => {
                     app.get('/', function(req, res) {
                         res.sendFile(__dirname + '/src/index.html');
                     });
+                },
+                proxy: {
+                    '/api': {
+                        target: 'http://lykf.admin.ct108.org:1507'
+                    } 
                 }
             }
         }
