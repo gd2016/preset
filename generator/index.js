@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports = (api, options) => {
-    api.render('./templates/src/api');
+    api.render('./templates');
     api.extendPackage({
         dependencies: {
             // "vue-router": "^3.0.1"
