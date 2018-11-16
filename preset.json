@@ -7,7 +7,8 @@
     "@vue/cli-plugin-babel": {},
     "@vue/cli-plugin-eslint": {},
     "vue-cli-plugin-ct-template": {
-        "prompts": false
+        "prompts": false,
+        "version": "0.3.1"
     }
   }
 }
