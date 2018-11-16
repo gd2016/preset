@@ -2,12 +2,12 @@
   "useConfigFiles": true,
   "router": true,
   "vuex": true,
+  "prompts": false,
   "cssPreprocessor": "sass",
   "plugins": {
     "@vue/cli-plugin-babel": {},
     "@vue/cli-plugin-eslint": {},
     "vue-cli-plugin-ct-template": {
-        "prompts": false,
         "version": "0.3.1"
     }
   }
