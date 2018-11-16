@@ -1,3 +1,5 @@
+__webpack_public_path__ = document.querySelector('meta[name="imgSrc"]').content;
+
 import Vue from 'vue';
 import router from '../../router/testPage.js';
 import VueRouter from 'vue-router';
@@ -9,5 +11,3 @@ new Vue({
     el: '#app',
     router
 });
-
-__webpack_public_path__ = document.querySelector('meta[name="imgSrc"]').content;
