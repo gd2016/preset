@@ -14,7 +14,7 @@ module.exports = (api, options) => {
             productionSourceMap: false,
             filenameHashing: false,
             pages: {
-                index: 'src/page/index/main.js'
+                index: 'src/view/index/main.js'
             },
             devServer: {
                 openPage: 'index.html',

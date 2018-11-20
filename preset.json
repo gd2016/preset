@@ -1,5 +1,4 @@
 {
-  "useConfigFiles": true,
   "router": true,
   "vuex": true,
   "cssPreprocessor": "sass",
