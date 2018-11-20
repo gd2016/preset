@@ -35,7 +35,6 @@ module.exports = (api, options) => {
 
     api.onCreateComplete(()=>{
         fs.unlink(`${api.resolve('public')}/favicon.ico`);
-        fs.unlink(`${api.resolve('public')}/index.html`);
         fs.unlink(`${api.resolve('src')}/App.vue`);
         fs.unlink(`${api.resolve('src')}/main.js`);
         fs.unlink(`${api.resolve('src')}/router.js`);
