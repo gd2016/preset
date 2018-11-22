@@ -17,7 +17,7 @@ module.exports = (api, options) => {
                 index: 'src/view/index/main.js'
             },
             devServer: {
-                openPage: 'index.html',
+                host: 'a.admin.ct108.org',
                 disableHostCheck: true,
                 setup: function(app) {
                     app.get('/', function(req, res) {
