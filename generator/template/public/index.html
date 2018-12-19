@@ -10,12 +10,15 @@
   <meta name="imgSrc" content="<%%= htmlWebpackPlugin.options.src %%>/">
   <title><%%= htmlWebpackPlugin.options.filename %%></title>
     <link rel="shortcut icon" href="http://static.tcy365.com/uc/common/images/favicon.ico"><%% for (var css in htmlWebpackPlugin.files.css) { %%>
-  <link href="<%%= htmlWebpackPlugin.options.src %%><%%= htmlWebpackPlugin.files.css[css] %%>" rel="stylesheet"><%% } %%>
+  <link href="<%%= htmlWebpackPlugin.options.src %%><%%= htmlWebpackPlugin.files.css[css] %%>?v=<%%= (+new Date()) %%>" rel="stylesheet"><%% } %%>
 </head>
 <body>
 <div id="app">
 </div>
-<script type="text/javascript" src="//static.tcy365.com/cdn/pace/1.0.2/pace.js"></script><%% for (var js in htmlWebpackPlugin.files.js) { %%>
-<script src="<%%= htmlWebpackPlugin.options.src %%><%%= htmlWebpackPlugin.files.js[js] %%>"></script><%% } %%>
+<script type="text/javascript" src="//static.tcy365.com/cdn/pace/1.0.2/pace.js"></script>
+<%% if(process.env.NODE_ENV!=='development') { %%>
+    <%% for (var js in htmlWebpackPlugin.files.js) { %%>
+<script src="<%%= htmlWebpackPlugin.options.src %%><%%= htmlWebpackPlugin.files.js[js] %%>?v=<%%= (+new Date()) %%>"></script><%% } %%>
+<%% } %%>
 </body>
 </html>
