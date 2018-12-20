@@ -1,5 +1,3 @@
-[TOC]
-
 ### 安装
 
 命令方式
@@ -13,7 +11,7 @@
 	vue ui
 ```
 
-![](http://doc.uc108.org:8002/Public/Uploads/2018-11-21/5bf4fadacccbf.png)
+
 
 ### 支持
 
