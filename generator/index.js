@@ -10,9 +10,12 @@ module.exports = (api, options) => {
             'eslint-plugin-html': '^4.0.6'
         },
         vue: {
-            assetsDir: 'ct108-admin-main/1.0.0/assets',
+            assetsDir: 'ct108-admin-main/assets',
+            pluginOptions: {
+                version: '1.0.0'
+            },
             productionSourceMap: false,
-            filenameHashing: false,
+            filenameHashing: true,
             pages: {
                 index: 'src/view/index/main.js'
             },
